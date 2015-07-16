@@ -15,7 +15,7 @@ operate.
 The sadf output would need to be modified to provide a per-system/per-metric input to elastic search.  Fortunately, logstash likes json 
 on a single line and this makes it easy to parse.  So a pipeline similar to the following would be needed.
 
-  <sar in json> | <tweak the data, split into transactions> | <logstash> | <elastic search>
+  [sar in json] | [tweak the data, split into transactions] | [logstash] | [elastic search]
 
 ## Activities in each step of the pipeline
 
@@ -27,13 +27,13 @@ Fortunately, sadf makes this very easy.  The sadf when invoked as follows
 
 gives output similar 
 
-  { "sysstat": 
-    {
-      "sysdata-version": 2.13,
-      "hosts": [
+    { "sysstat": 
       {
-        "nodename": "rasp01",
-        "sysname": "Linux",
+        "sysdata-version": 2.13,
+        "hosts": [
+        {
+           "nodename": "rasp01",
+           "sysname": "Linux",
         "release": "3.18.11-v7+",
         "machine": "armv7l",
         "number-of-cpus": 4,
@@ -45,8 +45,8 @@ gives output similar
              
               <other statistics>
           }
-      }
-    }    
-  }
+        }
+      }    
+    }
 
 
